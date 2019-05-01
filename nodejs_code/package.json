@@ -1,0 +1,23 @@
+{
+  "name": "api_rest",
+  "version": "1.0.0",
+  "description": "api rest para Proyecto de Analisis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "analisis2",
+    "usac"
+  ],
+  "author": "Ricardo Cutz",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.17.0",
+    "randomstring": "^1.1.5"
+  }
+}
