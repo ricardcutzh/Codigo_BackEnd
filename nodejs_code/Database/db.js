@@ -6,5 +6,4 @@ var connection = mysql.createConnection({
     password : 'admin123',
     database : 'banca'
   });
-
 module.exports = connection;
