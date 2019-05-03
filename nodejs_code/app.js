@@ -1,10 +1,10 @@
 var express = require('express');
-var cons = require('./Database/db');
 
 while(true)
 {
     try
     {
+        var cons = require('./Database/db');
         cons.connect();
         break;
     }
