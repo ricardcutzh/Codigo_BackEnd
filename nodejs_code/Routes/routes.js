@@ -31,6 +31,8 @@ router.route('/transferir').post(Cliente.TransferirMonto);
 router.route('/cuentas_no_asociadas').post(Cuenta.CuentasNoAsociadas);
 /** RUTA QUE DEVUELVE LAS CUENTAS ASOCIADAS AL USUARIO **/
 router.route('/cuentas_asociadas').post(Cuenta.CuentasAsociadas);
+/** RUTA PARA ELIMNAR SU PROPIA CUENTA **/
+router.route('/eliminar_cuenta').post(Cliente.EliminarCuenta);
 /***********************/
 
 /*SI SE CONSULTA UNA API QUE NO EXISTE EN LA API*/
