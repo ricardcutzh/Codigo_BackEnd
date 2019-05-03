@@ -237,8 +237,8 @@ function CuentasNoAsociadas(req, res)
         var idusuario = req.body.idUsuario;
         if(conn)
         {
-            var sql = "SELECT distinct Cliente.idCliente, Cliente.Correo as correo FROM Cliente WHERE Cliente.idCliente != 10 AND Cliente.idCliente NOT IN (SELECT Distinct Cliente.idCliente as Id FROM Cliente, Asociados WHERE Asociados.idCliente = ? AND Cliente.idCliente = Asociados.idSocio)"
-            var params = [idusuario];
+            var sql = "SELECT distinct Cliente.idCliente, Cliente.Correo as correo FROM Cliente WHERE Cliente.idCliente != ? AND Cliente.idCliente NOT IN (SELECT Distinct Cliente.idCliente as Id FROM Cliente, Asociados WHERE Asociados.idCliente = ? AND Cliente.idCliente = Asociados.idSocio)"
+            var params = [idusuario, idusuario];
             conn.query(sql, params, function(error, results, fields){
                 if(error)
                 {
