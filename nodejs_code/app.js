@@ -1,18 +1,6 @@
 var express = require('express');
-
-while(true)
-{
-    try
-    {
-        var cons = require('./Database/db');
-        cons.connect();
-        break;
-    }
-    catch(error)
-    {
-
-    }
-}
+var cons = require('./Database/db');
+cons.connect();
 
 //ESTE ES UN COMENTARIO
 var app = express();
