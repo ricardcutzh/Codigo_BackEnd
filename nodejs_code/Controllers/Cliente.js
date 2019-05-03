@@ -16,7 +16,7 @@ function Registro(req, res) {
             var cliente = { Nombre: nom, Apellido: ap, Correo: cor, Password: pas, Activo: 1 };
             var resp = conn.query(sql, cliente, function (error, results, fields) {
                 if (error) {
-                    throw error;
+                    res.json({ respuesta: 0 });
                 }
                 else {
                     Cuenta.NuevaCuenta(results.insertId)
@@ -52,7 +52,7 @@ function Login(req, res) {
             var params = [email, pass];
             var resp = conn.query(sql, params, function (error, results, fields) {
                 if (error) {
-                    throw error;
+                    res.json({ respuesta: 0 });
                 }
                 else {
                     if (results.length == 1) {
@@ -95,7 +95,7 @@ function AsociarCuenta(req, res) {
             var asociados = { idCliente: user, idSocio: socio };
             conn.query(sql, asociados, function (error, results, fields) {
                 if (error) {
-                    throw error;
+                    res.json({ respuesta: 0 });
                 }
                 else {
                     res.json({
@@ -131,7 +131,7 @@ function TransferirMonto(req, res) {
             var params = [user];
             conn.query(sql, params, function (error, results, fields) {
                 if (error) {
-                    throw error;
+                    res.json({ respuesta: 0 });
                 }
                 else {
                     if (results.length > 0) {
@@ -143,38 +143,34 @@ function TransferirMonto(req, res) {
                             sql1 = "UPDATE Cuenta SET SaldoActual = ? WHERE idCliente = ?";
                             conn.query(sql1, params2, function (error, results, fields) {
                                 if (error) {
-                                    throw error;
+                                    res.json({ respuesta: 0 });
                                 }
                                 else {
                                     var sql2 = "SELECT * FROM Cuenta WHERE idCliente = ?";
                                     var params3 = [socio];
                                     conn.query(sql2, params3, function (error, results, fields) {
                                         if (error) {
-                                            throw error;
+                                            res.json({ respuesta: 0 });
                                         }
                                         else {
-                                            if(results.length>0)
-                                            {
+                                            if (results.length > 0) {
                                                 acreditado = Number(results[0].SaldoActual) + Number(monto);
                                                 params4 = [acreditado, socio];
                                                 sql3 = "UPDATE Cuenta SET SaldoActual = ? WHERE idCliente = ?";
-                                                conn.query(sql3, params4, function(error, results, fields){
-                                                    if(error)
-                                                    {
-                                                        throw error;
+                                                conn.query(sql3, params4, function (error, results, fields) {
+                                                    if (error) {
+                                                        res.json({ respuesta: 0 });
                                                     }
-                                                    else
-                                                    {
+                                                    else {
                                                         res.json({
-                                                            respuesta:1
+                                                            respuesta: 1
                                                         })
                                                     }
                                                 });
                                             }
-                                            else
-                                            {
+                                            else {
                                                 res.json({
-                                                    respuesta : 0
+                                                    respuesta: 0
                                                 });
                                             }
                                         }
@@ -208,10 +204,49 @@ function TransferirMonto(req, res) {
         });
     }
 }
+/*** FUNCION PARA ELIMINAR UNA CUENTA **/
+function EliminarCuenta(req, res) {
+    try {
+        console.log("-------------------------------------");
+        console.log("llamada al Eliminar Cuenta");
+        console.log(req.body);
+        console.log("-------------------------------------");
+        iduser = req.body.idUsuario;
+        if(conn)
+        {
+            var sql1 = "UPDATE Cliente SET Activo = 0 WHERE idCliente = ?";
+            var params = [iduser];
+            conn.query(sql1, params, function(error, results, fields){
+                if(error)
+                {
+                    res.json({
+                        respuesta: 0
+                    });
+                }
+                else
+                {
+                    res.json({
+                        respuesta: 1
+                    });
+                }
+            });
+        }
+        else
+        {
+            res.json({
+                respuesta: 0
+            });
+        }
+    }
+    catch (error) {
+
+    }
+}
 /** EXPORT EL MODULO **/
 module.exports = {
     Registro,
     Login,
     AsociarCuenta,
-    TransferirMonto
+    TransferirMonto,
+    EliminarCuenta
 }
