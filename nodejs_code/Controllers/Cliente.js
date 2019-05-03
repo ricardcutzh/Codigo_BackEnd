@@ -48,7 +48,7 @@ function Login(req, res) {
         var email = req.body.correo;
         var pass = req.body.password;
         if (conn) {
-            var sql = "SELECT idCliente as idUsuario FROM Cliente WHERE Correo = ? AND Password = ?";
+            var sql = "SELECT idCliente as idUsuario FROM Cliente WHERE Correo = ? AND Password = ? AND Activo = 1";
             var params = [email, pass];
             var resp = conn.query(sql, params, function (error, results, fields) {
                 if (error) {
