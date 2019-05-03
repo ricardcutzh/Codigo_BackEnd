@@ -36,7 +36,10 @@ function ConsultaSaldo(req, res)
 {
     try
     {
-        console.log("llamada a consultar saldo");
+        console.log("-------------------------------------");
+        console.log("llamada al Consultar Saldo");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var iduser = req.body.idUsuario;
         if(conn)
         {
@@ -85,7 +88,10 @@ function AcreditarSaldo(req, res)
 {
     try
     {
-        console.log("llamada a acreditar saldo");
+        console.log("-------------------------------------");
+        console.log("llamada al Acreditar Saldo");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var monto = req.body.monto;
         var user = req.body.idUsuario;
         if(conn)
@@ -149,7 +155,10 @@ function DebitarSaldo(req, res)
 {
     try
     {
-        console.log("llamada al debitar saldo");
+        console.log("-------------------------------------");
+        console.log("llamada al Debitar Saldo");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var monto = req.body.monto;
         var user = req.body.idUsuario;
         if(conn)
@@ -221,7 +230,10 @@ function CuentasNoAsociadas(req, res)
 {
     try
     {
-        console.log("llamada al cuentas no asociadas");
+        console.log("-------------------------------------");
+        console.log("llamada al Cuentas no Asociadas");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var idusuario = req.body.idUsuario;
         if(conn)
         {
@@ -261,7 +273,10 @@ function CuentasAsociadas(req, res)
 {
     try
     {
-        console.log("llamada al Cuentas no asociadas");
+        console.log("-------------------------------------");
+        console.log("llamada al Asociadas");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var idusuario = req.body.idUsuario;
         if(conn)
         {

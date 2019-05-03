@@ -3,7 +3,10 @@ var Cuenta = require('../Controllers/Cuenta');
 /** FUNCION DE REGISTRO **/
 function Registro(req, res) {
     try {
-        console.log("llamada al registro....");
+        console.log("-------------------------------------");
+        console.log("llamada al Registro");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var ap = req.body.apellido;
         var cor = req.body.correo;
         var nom = req.body.nombre;
@@ -38,7 +41,10 @@ function Registro(req, res) {
 
 function Login(req, res) {
     try {
-        console.log("llamada al login");
+        console.log("-------------------------------------");
+        console.log("llamada al Login");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var email = req.body.correo;
         var pass = req.body.password;
         if (conn) {
@@ -78,9 +84,12 @@ function Login(req, res) {
 /** FUNCION PARA ASOCIAR UN SOCIO CON UN CLIENTE **/
 function AsociarCuenta(req, res) {
     try {
-        console.log("llamada al Asociar Cuenta");
         user = req.body.idUsuario;
         socio = req.body.idSocio;
+        console.log("-------------------------------------");
+        console.log("llamada al Asociar Cuenta");
+        console.log(req.body);
+        console.log("-------------------------------------");
         if (conn) {
             var sql = "INSERT INTO Asociados SET ?";
             var asociados = { idCliente: user, idSocio: socio };
@@ -110,7 +119,10 @@ function AsociarCuenta(req, res) {
 /** FUNCION PARA TRANSFERIR MONTO DE UNA CUENTA  A OTRA **/
 function TransferirMonto(req, res) {
     try {
-        console.log("llamada al transferir monto");
+        console.log("-------------------------------------");
+        console.log("llamada al Transferir monto");
+        console.log(req.body);
+        console.log("-------------------------------------");
         var user = req.body.idUsuario;
         var monto = req.body.monto;
         var socio = req.body.idSocio;
