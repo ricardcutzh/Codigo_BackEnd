@@ -5,7 +5,7 @@ function NuevaCuenta(idCuenta)
 {
     try
     {
-        
+        console.log("llamada al nueva cuenta");
         if(conn)
         {
             var sql = "INSERT INTO Cuenta SET ?";
@@ -36,6 +36,7 @@ function ConsultaSaldo(req, res)
 {
     try
     {
+        console.log("llamada a consultar saldo");
         var iduser = req.body.idUsuario;
         if(conn)
         {
@@ -84,6 +85,7 @@ function AcreditarSaldo(req, res)
 {
     try
     {
+        console.log("llamada a acreditar saldo");
         var monto = req.body.monto;
         var user = req.body.idUsuario;
         if(conn)
@@ -147,6 +149,7 @@ function DebitarSaldo(req, res)
 {
     try
     {
+        console.log("llamada al debitar saldo");
         var monto = req.body.monto;
         var user = req.body.idUsuario;
         if(conn)
@@ -218,6 +221,7 @@ function CuentasNoAsociadas(req, res)
 {
     try
     {
+        console.log("llamada al cuentas no asociadas");
         var idusuario = req.body.idUsuario;
         if(conn)
         {
@@ -257,6 +261,7 @@ function CuentasAsociadas(req, res)
 {
     try
     {
+        console.log("llamada al Cuentas no asociadas");
         var idusuario = req.body.idUsuario;
         if(conn)
         {
