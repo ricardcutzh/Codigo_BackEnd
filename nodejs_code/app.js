@@ -1,6 +1,6 @@
 var express = require('express');
 var cons = require('./Database/db');
-cons.connect();
+//cons.connect();
 
 //ESTE ES UN COMENTARIO
 var app = express();
