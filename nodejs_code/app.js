@@ -1,6 +1,6 @@
 var express = require('express');
 var sleep = require('system-sleep');
-sleep(1000);
+sleep(10000);
 var cons = require('./Database/db');
 cons.connect();
 
