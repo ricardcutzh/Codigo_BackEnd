@@ -1,6 +1,6 @@
 var express = require('express');
 var sleep = require('system-sleep');
-//var cons = require('./Database/db');
+var cons = require('./Database/db');
 
 
 //ESTE ES UN COMENTARIO
@@ -23,5 +23,5 @@ app.use('/', routes);
 
 var server = app.listen(8000, "0.0.0.0",function(){
     console.log("Escuchando en puerto 8000");
-    //cons.connect();
+    cons.connect();
 });
